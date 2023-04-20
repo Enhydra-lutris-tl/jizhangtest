@@ -1,0 +1,1 @@
+from .jizhangView import jizhangWidget
