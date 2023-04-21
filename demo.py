@@ -103,8 +103,7 @@ class Window(FramelessWindow):
         self.stackWidget = QStackedWidget(self)
 
         # create sub interface
-        self.searchInterface = jizhangWidget('记账页面', self)
-
+        self.searchInterface = jizhangWidget('jizhang view', self)
         self.musicInterface = Widget('报表页面', self)
         self.videoInterface = Widget('小工具页面', self)
         self.folderInterface = Widget('文件夹页面', self)
