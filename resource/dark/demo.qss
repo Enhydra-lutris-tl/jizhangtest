@@ -51,4 +51,3 @@ CloseButton {
     qproperty-normalColor: white;
     qproperty-normalBackgroundColor: transparent;
 }
-

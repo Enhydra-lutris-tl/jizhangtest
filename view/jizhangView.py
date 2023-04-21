@@ -1,6 +1,7 @@
 from PySide6.QtCore import Qt
 from PySide6.QtWidgets import QFrame, QLabel, QHBoxLayout
-from qfluentwidgets import LineEdit
+from qfluentwidgets import LineEdit, isDarkTheme
+from common.style_sheet import StyleSheet
 
 
 class jizhangWidget(QFrame):
@@ -9,6 +10,7 @@ class jizhangWidget(QFrame):
         super().__init__(parent=parent)
         self.setObjectName(text.replace(' ', '-'))
         self.label = QLabel(text, self)
+        self.label.setObjectName('ceshi')
         self.label.setAlignment(Qt.AlignCenter)
         self.LineEdit = LineEdit()
         self.hBoxLayout = QHBoxLayout(self)
@@ -17,3 +19,4 @@ class jizhangWidget(QFrame):
 
         # leave some space for title bar
         self.hBoxLayout.setContentsMargins(0, 32, 0, 0)
+        StyleSheet.JIZHANG_VIEW.apply(self)

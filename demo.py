@@ -8,7 +8,7 @@ from qfluentwidgets import (NavigationInterface,NavigationItemPosition, Navigati
                             isDarkTheme, setTheme, Theme, LineEdit)
 from qfluentwidgets import FluentIcon as FIF
 from qframelesswindow import FramelessWindow, TitleBar
-from resource import jizhangWidget
+from view.jizhangView import jizhangWidget
 
 class Widget(QFrame):
 
@@ -184,7 +184,7 @@ class Window(FramelessWindow):
         self.navigationInterface.addItem(
             routeKey=self.settingInterface.objectName(),
             icon=FIF.SETTING,
-            text='Settings',
+            text='设置',
             onClick=lambda: self.switchTo(self.settingInterface),
             position=NavigationItemPosition.BOTTOM
         )
