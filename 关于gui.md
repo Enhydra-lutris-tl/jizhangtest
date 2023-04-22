@@ -15,4 +15,9 @@ StyleSheet.JIZHANG_VIEW.apply(self)
 
 ### view 页面视图存放
 
+### 其他
+#### todo
+-[x] 1.qss不生效是文件路径问题
+-[ ] 2.开始将通用方法解耦
+
 
