@@ -6,7 +6,7 @@ from common.add_widget import AddWidget
 
 
 class jizhangWidget(AddWidget):
-
+    #todo：完善记账页面内容
     def __init__(self, text: str, parent=None):
         super().__init__(text, parent=parent)
         self.gridLayout = QGridLayout(self)
