@@ -15,11 +15,11 @@ QTableCornerButton::section{
 }
 
 QHeaderView::section{
-    color:#FFFFFF;
+    color:rgb(173, 177, 179);
     background:rgb(39, 39, 39);
     border:none;
 	border: 0.5px solid rgb(215, 217, 218);
-
+    font-size:16px;
     text-align:center;
     padding-left:2px;
 	padding-right:2px;
@@ -30,11 +30,12 @@ QTableWidget{
     border:none;
 	outline:none;
     /*font-size:18px;*/
-    color:#666666;
-}
+    }
 
 QTableWidget::item{
 	border:0.25px solid rgb(215, 217, 218);
+	color:rgb(255,255,255);
+	font-size:16px
 
 }
 

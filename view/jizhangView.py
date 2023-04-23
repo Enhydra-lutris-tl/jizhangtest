@@ -52,7 +52,8 @@ class jizhangWidget(AddWidget):
         self.hBoxLayout4.addWidget(self.comboBox3, 0)
 
         # 表格展示
-        self.table = QTableWidget(5, 5)
+        self.table = QTableWidget(5, 4)
+        self.table.setHorizontalHeaderLabels(['时间','交易类型','收/支','支付方式'])
         # 设置表格拉伸属性
         self.table.horizontalHeader().setSectionResizeMode(QHeaderView.ResizeMode.Stretch)
         self.gridLayout.addLayout(self.hBoxLayout, 0, 0)
