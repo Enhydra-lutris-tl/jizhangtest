@@ -4,11 +4,12 @@ from PySide6.QtCore import Qt, QRect
 from PySide6.QtGui import QIcon, QPainter, QImage, QBrush, QColor, QFont
 from PySide6.QtWidgets import QApplication, QFrame, QStackedWidget, QHBoxLayout, QLabel
 
-from qfluentwidgets import (NavigationInterface,NavigationItemPosition, NavigationWidget, MessageBox,
+from qfluentwidgets import (NavigationInterface, NavigationItemPosition, NavigationWidget, MessageBox,
                             isDarkTheme, setTheme, Theme, LineEdit)
 from qfluentwidgets import FluentIcon as FIF
 from qframelesswindow import FramelessWindow, TitleBar
 from view.jizhangView import jizhangWidget
+
 
 class Widget(QFrame):
 
@@ -188,14 +189,17 @@ class Window(FramelessWindow):
             position=NavigationItemPosition.BOTTOM
         )
 
-        #!IMPORTANT: don't forget to set the default route key
-        self.navigationInterface.setDefaultRouteKey(self.musicInterface.objectName())
+        # !IMPORTANT: don't forget to set the default route keyi
+        self.navigationInterface.setDefaultRouteKey(self.searchInterface.objectName())
 
         # set the maximum width
         # self.navigationInterface.setExpandWidth(300)
 
         self.stackWidget.currentChanged.connect(self.onCurrentInterfaceChanged)
-        self.stackWidget.setCurrentIndex(1)
+        self.stackWidget.setCurrentIndex(0)
+        # 初始点击一次首页按钮
+        self.onCurrentInterfaceChanged(0)
+
 
     def initWindow(self):
         self.resize(900, 700)
@@ -205,7 +209,7 @@ class Window(FramelessWindow):
 
         desktop = QApplication.screens()[0].availableGeometry()
         w, h = desktop.width(), desktop.height()
-        self.move(w//2 - self.width()//2, h//2 - self.height()//2)
+        self.move(w // 2 - self.width() // 2, h // 2 - self.height() // 2)
 
         self.setQss()
 
@@ -220,6 +224,7 @@ class Window(FramelessWindow):
     def onCurrentInterfaceChanged(self, index):
         widget = self.stackWidget.widget(index)
         self.navigationInterface.setCurrentItem(widget.objectName())
+        print(index)
 
     def showMessageBox(self):
         w = MessageBox(
@@ -232,7 +237,7 @@ class Window(FramelessWindow):
 
     def resizeEvent(self, e):
         self.titleBar.move(46, 0)
-        self.titleBar.resize(self.width()-46, self.titleBar.height())
+        self.titleBar.resize(self.width() - 46, self.titleBar.height())
 
 
 if __name__ == '__main__':
