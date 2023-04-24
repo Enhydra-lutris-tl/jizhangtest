@@ -137,13 +137,13 @@ class Window(FramelessWindow):
     def initNavigation(self):
         self.navigationInterface.addItem(
             routeKey=self.searchInterface.objectName(),
-            icon=FIF.SEARCH,
+            icon=FIF.HOME,
             text='记账',
             onClick=lambda: self.switchTo(self.searchInterface)
         )
         self.navigationInterface.addItem(
             routeKey=self.musicInterface.objectName(),
-            icon=FIF.MUSIC,
+            icon=FIF.BOOK_SHELF,
             text='报表',
             onClick=lambda: self.switchTo(self.musicInterface)
         )

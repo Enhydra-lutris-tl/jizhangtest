@@ -23,7 +23,7 @@ def getAlipayValue():
     for i in ['交易时间', '交易分类', '收/支', '收/付款方式', '金额']:
         if i != '金额':
             df4[i] = df4[i].apply(deleltKongge)
-    print('支付宝收支统计:\n', df4.groupby(['收/支']).agg({"金额": "sum"}))
+    # print('支付宝收支统计:\n', df4.groupby(['收/支']).agg({"金额": "sum"}))
     return df4[['交易时间', '交易分类', '收/支', '收/付款方式', '金额']]
 
 
@@ -33,7 +33,7 @@ def getWecatValue():
     df_wecat = pd.read_csv(path)
     df_wecat['金额(元)'] = df_wecat['金额(元)'].apply(convert_currency)
     df_wecat['金额(元)'] = pd.to_numeric(df_wecat['金额(元)'])  # 列数据类型转换为浮点型
-    print('微信收支统计:\n', df_wecat.groupby(['收/支']).agg({"金额(元)": "sum"}))
+    # print('微信收支统计:\n', df_wecat.groupby(['收/支']).agg({"金额(元)": "sum"}))
     new_cl = ['交易时间', '交易分类', '收/支', '收/付款方式', '金额']
     return df_wecat[['交易时间', '交易类型', '收/支', '支付方式', '金额(元)']].set_axis(new_cl, axis=1)
 
@@ -57,7 +57,7 @@ def getSrc(path, data):
             srcList2.append(i)
     if len(srcList2) > 2:
         print('错误')
-    print("输出结果为：", srcList2)
+    # print("输出结果为：", srcList2)
     return srcList2
 
 
@@ -69,5 +69,9 @@ pd.set_option('display.unicode.ambiguous_as_wide', True)
 pd.set_option('display.unicode.east_asian_width', True)
 
 
-print(pd.concat([getWecatValue(), getAlipayValue()], ignore_index=True))
+# print(pd.concat([getWecatValue(), getAlipayValue()], ignore_index=True))
 # getSrc('/Users/tanglei/life/', '20230331')
+
+
+def ceshi():
+    return pd.concat([getWecatValue(), getAlipayValue()], ignore_index=True)
