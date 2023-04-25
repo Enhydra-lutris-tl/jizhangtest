@@ -8,6 +8,8 @@ from qfluentwidgets import (NavigationInterface, NavigationItemPosition, Navigat
                             isDarkTheme, setTheme, Theme, LineEdit)
 from qfluentwidgets import FluentIcon as FIF
 from qframelesswindow import FramelessWindow, TitleBar
+
+from view.ChartView import ChartWidget
 from view.jizhangView import jizhangWidget
 
 
@@ -105,7 +107,7 @@ class Window(FramelessWindow):
 
         # create sub interface
         self.searchInterface = jizhangWidget('jizhang view', self)
-        self.musicInterface = Widget('报表页面', self)
+        self.musicInterface = ChartWidget('报表页面', self)
         self.videoInterface = Widget('小工具页面', self)
         self.folderInterface = Widget('文件夹页面', self)
         self.settingInterface = Widget('设置页面', self)

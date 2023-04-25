@@ -1,10 +1,13 @@
+import json
+
 from PySide6.QtCore import Qt
 from PySide6.QtWidgets import QFrame, QLabel, QHBoxLayout, QGridLayout, QStyle, QTableWidget, QHeaderView, \
     QTableWidgetItem
-from qfluentwidgets import LineEdit, isDarkTheme, EditableComboBox, ComboBox,PushButton
+from qfluentwidgets import LineEdit, isDarkTheme, EditableComboBox, ComboBox, PushButton, DoubleSpinBox
 from common.style_sheet import StyleSheet
 from common.add_widget import AddWidget
 from main import ceshi as getValue
+from datetime import datetime
 
 
 class jizhangWidget(AddWidget):
@@ -15,15 +18,15 @@ class jizhangWidget(AddWidget):
 
         # 金额输入框
         self.label = QLabel('金额', self)
-        self.LineEdit = LineEdit()
-        self.LineEdit.setMinimumWidth(300)
-        self.LineEdit.setMaximumWidth(300)
+        self.DoubleSpinBox = DoubleSpinBox()
+        self.DoubleSpinBox.setMinimumWidth(300)
+        self.DoubleSpinBox.setMaximumWidth(300)
         self.hBoxLayout = QHBoxLayout()
         self.hBoxLayout.addWidget(self.label, 0)
-        self.hBoxLayout.addWidget(self.LineEdit, 0)
+        self.hBoxLayout.addWidget(self.DoubleSpinBox, 0)
 
         # 交易类型选择框
-        self.label2 = QLabel('交易类型', self)
+        self.label2 = QLabel('交易分类', self)
         self.comboBox = ComboBox(self)
         self.comboBox.setMinimumWidth(300)
         self.comboBox.setMaximumWidth(300)
@@ -47,7 +50,7 @@ class jizhangWidget(AddWidget):
         self.hBoxLayout3.addWidget(self.comboBox2, 0)
 
         # 支付方式选择框
-        self.label4 = QLabel('支付方式', self)
+        self.label4 = QLabel('收/付款方式', self)
         self.comboBox3 = ComboBox(self)
         self.comboBox3.setMinimumWidth(300)
         self.comboBox3.setMaximumWidth(300)
@@ -59,8 +62,10 @@ class jizhangWidget(AddWidget):
         self.hBoxLayout4.addWidget(self.comboBox3, 0)
 
         # 提交按钮
-        self.subMitButton = PushButton('提交')
+        self.subMitButton = PushButton('添加')
+        self.subMitButton.clicked.connect(self.addTableValue)
         self.rsMitButton = PushButton('重置')
+        self.rsMitButton.clicked.connect(self.Reset)
         self.hBoxLayout5 = QHBoxLayout()
         self.hBoxLayout5.addWidget(self.rsMitButton, 0)
         self.hBoxLayout5.addWidget(self.subMitButton, 0)
@@ -90,3 +95,29 @@ class jizhangWidget(AddWidget):
         self.hBoxLayout4.setContentsMargins(15, 15, 0, 15)
         self.gridLayout.setContentsMargins(32, 32, 32, 32)  # 此方法可以控制窗体位置
         StyleSheet.JIZHANG_VIEW.apply(self)
+
+    # 重置按钮功能
+    def Reset(self):
+        self.comboBox.setCurrentIndex(0)
+        self.comboBox2.setCurrentIndex(0)
+        self.comboBox3.setCurrentIndex(0)
+        self.DoubleSpinBox.setValue(0.00)
+
+    # 添加按钮功能 并添加到数据库
+    def addTableValue(self):
+        DoubleSpinBoxText = self.DoubleSpinBox.text()
+        comboxText = self.comboBox.text()
+        combox2Text = self.comboBox2.text()
+        combox3Text = self.comboBox3.text()
+        nowDateTime = datetime.now().strftime("%Y-%m-%d %H:%M")
+        if DoubleSpinBoxText == '0.00':
+            print('内容为空，请输入正确金额')
+        else:
+            newValue = json.dumps({
+                "nowDate": nowDateTime,
+                "trade": comboxText,
+                "iae": combox2Text,
+                "payMethod": combox3Text,
+                "moneyValue": DoubleSpinBoxText
+            }, ensure_ascii=False)
+            print(newValue)

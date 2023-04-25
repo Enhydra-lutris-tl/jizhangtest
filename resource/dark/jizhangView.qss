@@ -1,8 +1,8 @@
 QLabel{
     color: white;
     font-size:12px;
-    min-width:50px;
-    max-width:50px;
+    min-width:90px;
+    max-width:90px;
     text-align:right;
 }
 
