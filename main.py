@@ -43,10 +43,12 @@ def convert_currency(val):
     new_val = val.replace(',', '').replace('¥', '')
     return float(new_val)
 
+
 # 清除空格
 def deleltKongge(value):
     new_value = value.strip()
     return new_value
+
 
 # 获取文件夹路径
 def getSrc(path, data):
@@ -75,3 +77,23 @@ pd.set_option('display.unicode.east_asian_width', True)
 
 def ceshi():
     return pd.concat([getWecatValue(), getAlipayValue()], ignore_index=True)
+
+
+def getIES():
+    IES = ceshi().groupby(['收/支']).agg({"金额": "sum"})
+    IES_Json = []
+    Index_Value = IES.index.values
+    IES_Sum = sum(IES['金额'])
+    for i in range(len(Index_Value)):
+        if Index_Value[i] == '/':
+            label = '其他'
+        else:
+            label = Index_Value[i]
+        IES_Json.append(
+
+            {
+                "label": label + '  ' + str(round(IES['金额'].loc[Index_Value[i]]/IES_Sum*100, 2)) + '%',
+                "value": IES['金额'].loc[Index_Value[i]]
+            }
+        )
+    return IES_Json

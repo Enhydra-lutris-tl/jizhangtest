@@ -1,0 +1,5 @@
+QChartView{
+    background:rgb(39, 39, 39);
+
+}
+

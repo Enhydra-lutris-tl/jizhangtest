@@ -9,6 +9,7 @@ class StyleSheet(StyleSheetBase, Enum):
 
     LINK_CARD = "link_card"
     JIZHANG_VIEW = "jizhangView"
+    CHART_VIEW = "ChartView"
 
     def path(self, theme=Theme.AUTO):
         theme = qconfig.theme if theme == Theme.AUTO else theme
