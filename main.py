@@ -4,7 +4,7 @@ import pandas as pd
 
 # 获取支付宝账单数据
 def getAlipayValue():
-    path = open('resource/ziyuan/alipay_record_20230331_103351.csv')
+    path = open("F:\资源\Alipay_record_20230331_103351.csv", encoding='UTF-8')
     df_alipay = pd.read_csv(path)
     count = df_alipay.shape[0]
     df2 = df_alipay
@@ -28,7 +28,7 @@ def getAlipayValue():
 
 # 获取微信账单数据
 def getWecatValue():
-    path = open('resource/ziyuan/微信支付账单(20230301-20230331).csv')
+    path = open("F:\资源\微信支付账单(20230301-20230331).csv", encoding='UTF-8')
     df_wecat = pd.read_csv(path)
     df_wecat['金额(元)'] = df_wecat['金额(元)'].apply(convert_currency)
     df_wecat['金额(元)'] = pd.to_numeric(df_wecat['金额(元)'])  # 列数据类型转换为浮点型
@@ -91,7 +91,7 @@ def getIES():
         IES_Json.append(
 
             {
-                "label": label + '  ' + str(round(IES['金额'].loc[Index_Value[i]]/IES_Sum*100, 2)) + '%',
+                "label": label + '  ' + str(round(IES['金额'].loc[Index_Value[i]] / IES_Sum * 100, 2)) + '%',
                 "value": IES['金额'].loc[Index_Value[i]]
             }
         )

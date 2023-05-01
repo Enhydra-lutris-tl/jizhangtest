@@ -32,7 +32,7 @@ class AvatarWidget(NavigationWidget):
 
     def __init__(self, parent=None):
         super().__init__(isSelectable=False, parent=parent)
-        self.avatar = QImage('resource/shoko.png').scaled(
+        self.avatar = QImage('E:/pycharm/pyProject/jizhangtest/resource/shoko.png').scaled(
             24, 24, Qt.KeepAspectRatio, Qt.SmoothTransformation)
 
     def paintEvent(self, e):
@@ -205,7 +205,7 @@ class Window(FramelessWindow):
 
     def initWindow(self):
         self.resize(900, 700)
-        self.setWindowIcon(QIcon('resource/logo.png'))
+        self.setWindowIcon(QIcon('E:/pycharm/pyProject/jizhangtest/resource/logo.png'))
         self.setWindowTitle('记账软件')
         self.titleBar.setAttribute(Qt.WA_StyledBackground)
 
@@ -216,8 +216,9 @@ class Window(FramelessWindow):
         self.setQss()
 
     def setQss(self):
+        # "E:\pycharm\pyProject\jizhangtest\resource\dark\demo.qss"
         color = 'dark' if isDarkTheme() else 'light'
-        with open(f'resource/{color}/demo.qss', encoding='utf-8') as f:
+        with open(f'E:/pycharm/pyProject/jizhangtest/resource/{color}/demo.qss', encoding='utf-8') as f:
             self.setStyleSheet(f.read())
 
     def switchTo(self, widget):
@@ -246,4 +247,4 @@ if __name__ == '__main__':
     app = QApplication(sys.argv)
     w = Window()
     w.show()
-    app.exec()
+    sys.exit(app.exec())
