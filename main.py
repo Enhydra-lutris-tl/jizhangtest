@@ -1,6 +1,5 @@
 import glob
 import pandas as pd
-from prettytable import PrettyTable
 
 
 # 获取支付宝账单数据
