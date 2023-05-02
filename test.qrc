@@ -1,0 +1,7 @@
+<RCC>
+  <qresource>
+    <file>resource/dark/ChartView.qss</file>
+    <file>resource/dark/demo.qss</file>
+    <file>resource/dark/jizhangView.qss</file>
+  </qresource>
+</RCC>
