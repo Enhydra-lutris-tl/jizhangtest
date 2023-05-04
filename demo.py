@@ -5,13 +5,13 @@ from PySide6.QtGui import QIcon, QPainter, QImage, QBrush, QColor, QFont
 from PySide6.QtWidgets import QApplication, QFrame, QStackedWidget, QHBoxLayout, QLabel
 
 from qfluentwidgets import (NavigationInterface, NavigationItemPosition, NavigationWidget, MessageBox,
-                            isDarkTheme, setTheme, Theme, LineEdit)
+                            isDarkTheme, setTheme, Theme)
 from qfluentwidgets import FluentIcon as FIF
 from qframelesswindow import FramelessWindow, TitleBar
 
 from view.ChartView import ChartWidget
 from view.jizhangView import jizhangWidget
-import test
+from resource import test   # type: ignore
 
 class Widget(QFrame):
 
@@ -32,7 +32,7 @@ class AvatarWidget(NavigationWidget):
 
     def __init__(self, parent=None):
         super().__init__(isSelectable=False, parent=parent)
-        self.avatar = QImage('E:/pycharm/pyProject/jizhangtest/resource/shoko.png').scaled(
+        self.avatar = QImage(':shoko.png').scaled(
             24, 24, Qt.KeepAspectRatio, Qt.SmoothTransformation)
 
     def paintEvent(self, e):
@@ -205,7 +205,7 @@ class Window(FramelessWindow):
 
     def initWindow(self):
         self.resize(900, 700)
-        self.setWindowIcon(QIcon('E:/pycharm/pyProject/jizhangtest/resource/logo.png'))
+        self.setWindowIcon(QIcon(':logo.png'))
         self.setWindowTitle('记账软件')
         self.titleBar.setAttribute(Qt.WA_StyledBackground)
 
@@ -218,7 +218,7 @@ class Window(FramelessWindow):
     def setQss(self):
         # "E:\pycharm\pyProject\jizhangtest\resource\dark\demo.qss"
         color = 'dark' if isDarkTheme() else 'light'
-        with open(f':resource/{color}/demo.qss', encoding='utf-8') as f:
+        with open(f'resource/{color}/demo.qss', encoding='utf-8') as f:
             self.setStyleSheet(f.read())
 
     def switchTo(self, widget):

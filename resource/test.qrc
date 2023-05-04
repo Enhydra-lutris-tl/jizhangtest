@@ -1,0 +1,10 @@
+<RCC>
+  <qresource>
+    <file>dark/demo.qss</file>
+    <file>dark/ChartView.qss</file>
+    <file>dark/jizhangView.qss</file>
+
+    <file>logo.png</file>
+    <file>shoko.png</file>
+  </qresource>
+</RCC>
