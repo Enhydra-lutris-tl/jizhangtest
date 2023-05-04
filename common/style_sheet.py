@@ -4,6 +4,7 @@ from enum import Enum
 from qfluentwidgets import StyleSheetBase, Theme, isDarkTheme, qconfig
 import test
 
+
 class StyleSheet(StyleSheetBase, Enum):
     """ Style sheet  """
 

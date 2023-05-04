@@ -3,5 +3,7 @@
     <file>resource/dark/ChartView.qss</file>
     <file>resource/dark/demo.qss</file>
     <file>resource/dark/jizhangView.qss</file>
+    <file>resource/ziyuan/alipay_record_20230331_103351.csv</file>
+    <file>resource/ziyuan/wecat_20230301_20230331.csv</file>
   </qresource>
 </RCC>
