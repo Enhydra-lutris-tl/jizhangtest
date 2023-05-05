@@ -70,6 +70,12 @@ class jizhangWidget(AddWidget):
         self.hBoxLayout5.addWidget(self.rsMitButton, 0)
         self.hBoxLayout5.addWidget(self.subMitButton, 0)
 
+        # 导入按钮
+        self.importButton = PushButton('导入')
+        # self.importButton.clicked.connect(self.addTableValue)
+
+
+
         # 表格展示
         mainValue = getValue()
         cloumsCount = mainValue.shape[0]
@@ -82,12 +88,15 @@ class jizhangWidget(AddWidget):
                 self.table.setItem(i, b, QTableWidgetItem(str(mainValue[headerItemText[b]][i])))
         # 设置表格拉伸属性
         self.table.horizontalHeader().setSectionResizeMode(QHeaderView.ResizeMode.Stretch)
+
         self.gridLayout.addLayout(self.hBoxLayout, 0, 1)
         self.gridLayout.addLayout(self.hBoxLayout2, 0, 2)
         self.gridLayout.addLayout(self.hBoxLayout3, 1, 1)
         self.gridLayout.addLayout(self.hBoxLayout4, 1, 2)
         self.gridLayout.addWidget(self.table, 3, 0, 1, 3)
         self.gridLayout.addLayout(self.hBoxLayout5, 2, 2)
+        self.gridLayout.addWidget(self.importButton, 2, 0)
+
         # leave some space for title bar
         self.hBoxLayout.setContentsMargins(15, 15, 15, 15)
         self.hBoxLayout2.setContentsMargins(15, 15, 0, 15)

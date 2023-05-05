@@ -6,7 +6,7 @@ import test
 
 # 获取支付宝账单数据
 def getAlipayValue():
-    path = open("/Users/tanglei/project/jizhangtest/resource/ziyuan/alipay_record_20230331_103351.csv",
+    path = open(get_Csv_File() + "/alipay_record_20230331_103351.csv",
                 encoding='UTF-8')
     df_alipay = pd.read_csv(path)
     count = df_alipay.shape[0]
@@ -29,9 +29,14 @@ def getAlipayValue():
     return df4[['交易时间', '交易分类', '收/支', '收/付款方式', '金额']]
 
 
+# 返回路径
+def get_Csv_File():
+    return '/Users/tanglei/life'
+
+
 # 获取微信账单数据
 def getWecatValue():
-    path = open("/Users/tanglei/project/jizhangtest/resource/ziyuan/wecat_20230301_20230331.csv", encoding='UTF-8')
+    path = open(get_Csv_File() + "/微信支付账单(20230301-20230331).csv", encoding='UTF-8')
     df_wecat = pd.read_csv(path)
     df_wecat['金额(元)'] = df_wecat['金额(元)'].apply(convert_currency)
     df_wecat['金额(元)'] = pd.to_numeric(df_wecat['金额(元)'])  # 列数据类型转换为浮点型
@@ -99,5 +104,3 @@ def getIES():
             }
         )
     return IES_Json
-
-
