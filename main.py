@@ -1,10 +1,13 @@
 import glob
 import pandas as pd
+from PySide6.QtCore import QFile, QIODevice
+import test
 
 
 # 获取支付宝账单数据
 def getAlipayValue():
-    path = open("./resource/ziyuan/alipay_record_20230331_103351.csv", encoding='UTF-8')
+    path = open("/Users/tanglei/project/jizhangtest/resource/ziyuan/alipay_record_20230331_103351.csv",
+                encoding='UTF-8')
     df_alipay = pd.read_csv(path)
     count = df_alipay.shape[0]
     df2 = df_alipay
@@ -28,7 +31,7 @@ def getAlipayValue():
 
 # 获取微信账单数据
 def getWecatValue():
-    path = open("./resource/ziyuan/wecat_20230301_20230331.csv", encoding='UTF-8')
+    path = open("/Users/tanglei/project/jizhangtest/resource/ziyuan/wecat_20230301_20230331.csv", encoding='UTF-8')
     df_wecat = pd.read_csv(path)
     df_wecat['金额(元)'] = df_wecat['金额(元)'].apply(convert_currency)
     df_wecat['金额(元)'] = pd.to_numeric(df_wecat['金额(元)'])  # 列数据类型转换为浮点型
@@ -96,3 +99,5 @@ def getIES():
             }
         )
     return IES_Json
+
+
