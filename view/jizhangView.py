@@ -72,9 +72,14 @@ class jizhangWidget(AddWidget):
 
         # 导入按钮
         self.importButton = PushButton('导入')
+        self.importButton.setMaximumWidth(50)
         # self.importButton.clicked.connect(self.addTableValue)
 
-
+        # 操作情况反馈标签
+        self.feedbackLabel = QLabel('此位置展示操作反馈')
+        self.feedbackLabel.adjustSize()  # 自适应宽度
+        self.feedbackLabel.setWordWrap(True)  # 自动换行
+        self.feedbackLabel.setObjectName('feedbackText')  # 独立样式
 
         # 表格展示
         mainValue = getValue()
@@ -96,8 +101,9 @@ class jizhangWidget(AddWidget):
         self.gridLayout.addWidget(self.table, 3, 0, 1, 3)
         self.gridLayout.addLayout(self.hBoxLayout5, 2, 2)
         self.gridLayout.addWidget(self.importButton, 2, 0)
+        self.gridLayout.addWidget(self.feedbackLabel, 2, 1)
 
-        # leave some space for title bar
+        # 为标题栏留出一些空间
         self.hBoxLayout.setContentsMargins(15, 15, 15, 15)
         self.hBoxLayout2.setContentsMargins(15, 15, 0, 15)
         self.hBoxLayout3.setContentsMargins(15, 15, 15, 15)
@@ -121,6 +127,7 @@ class jizhangWidget(AddWidget):
         nowDateTime = datetime.now().strftime("%Y-%m-%d %H:%M")
         if DoubleSpinBoxText == '0.00':
             print('内容为空，请输入正确金额')
+            self.feedbackLabel.setText('内容为空，请输入正确金额')
         else:
             newValue = json.dumps({
                 "nowDate": nowDateTime,
@@ -130,3 +137,4 @@ class jizhangWidget(AddWidget):
                 "moneyValue": DoubleSpinBoxText
             }, ensure_ascii=False)
             print(newValue)
+            self.feedbackLabel.setText(newValue)
