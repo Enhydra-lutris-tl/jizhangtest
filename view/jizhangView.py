@@ -1,13 +1,16 @@
 import json
+import os
 
 from PySide6.QtCore import Qt
+from PySide6.QtGui import QStandardItemModel, QStandardItem
 from PySide6.QtWidgets import QFrame, QLabel, QHBoxLayout, QGridLayout, QStyle, QTableWidget, QHeaderView, \
-    QTableWidgetItem
-from qfluentwidgets import LineEdit, isDarkTheme, EditableComboBox, ComboBox, PushButton, DoubleSpinBox
+    QTableWidgetItem, QTableView, QFileDialog
+from qfluentwidgets import ComboBox, PushButton, DoubleSpinBox, TableView, TableItemDelegate, TableWidget
 from common.style_sheet import StyleSheet
 from common.add_widget import AddWidget
 from main import ceshi as getValue
 from datetime import datetime
+import yaml
 
 
 class jizhangWidget(AddWidget):
@@ -73,7 +76,7 @@ class jizhangWidget(AddWidget):
         # 导入按钮
         self.importButton = PushButton('导入')
         self.importButton.setMaximumWidth(50)
-        # self.importButton.clicked.connect(self.addTableValue)
+        self.importButton.clicked.connect(self.select_folder)
 
         # 操作情况反馈标签
         self.feedbackLabel = QLabel('此位置展示操作反馈')
@@ -83,17 +86,29 @@ class jizhangWidget(AddWidget):
 
         # 表格展示
         mainValue = getValue()
-        cloumsCount = mainValue.shape[0]
+        LinesCount = mainValue.shape[0]
         rowsCount = mainValue.shape[1]
         headerItemText = mainValue.columns.values
-        self.table = QTableWidget(cloumsCount, 5)
-        self.table.setHorizontalHeaderLabels(headerItemText)
-        for i in range(cloumsCount):
+        self.table = TableView()
+
+        # 模型层
+        self.model = QStandardItemModel(LinesCount, 5)
+        self.model.setHorizontalHeaderLabels(headerItemText)
+        for i in range(LinesCount):
             for b in range(rowsCount):
-                self.table.setItem(i, b, QTableWidgetItem(str(mainValue[headerItemText[b]][i])))
+                self.model.setItem(i, b, QStandardItem(str(mainValue[headerItemText[b]][i])))
+
+        # 视图层绑定模型层
+        self.table.setModel(self.model)
+
         # 设置表格拉伸属性
         self.table.horizontalHeader().setSectionResizeMode(QHeaderView.ResizeMode.Stretch)
+        self.table.verticalHeader().hide()
 
+        # 设置单元格无法编辑
+        self.table.setEditTriggers(QTableView.NoEditTriggers)
+
+        # 布局
         self.gridLayout.addLayout(self.hBoxLayout, 0, 1)
         self.gridLayout.addLayout(self.hBoxLayout2, 0, 2)
         self.gridLayout.addLayout(self.hBoxLayout3, 1, 1)
@@ -138,3 +153,17 @@ class jizhangWidget(AddWidget):
             }, ensure_ascii=False)
             print(newValue)
             self.feedbackLabel.setText(newValue)
+
+    def select_folder(self):
+        test_file = os.path.abspath('.')
+        folder_file = QFileDialog.getExistingDirectory(self, '选择文件夹')
+        print(folder_file, test_file)
+
+        """
+        自动生成yaml文件
+        """
+        data = {
+            "folder_file": folder_file,
+        }
+        with open(test_file + "/config.yaml", "w") as f:  # 写文件
+            yaml.safe_dump(data=data, stream=f)
