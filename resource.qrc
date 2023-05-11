@@ -1,5 +1,5 @@
 <RCC>
-  <qresource>
+  <qresource prefix="/">
     <file>resource/dark/demo.qss</file>
     <file>resource/dark/ChartView.qss</file>
     <file>resource/dark/jizhangView.qss</file>

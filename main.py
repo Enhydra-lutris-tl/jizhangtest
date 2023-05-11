@@ -2,7 +2,6 @@ import glob
 import os
 
 import pandas as pd
-import yaml
 from PySide6.QtCore import QFile, QIODevice
 import test
 

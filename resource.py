@@ -16972,73 +16972,76 @@ Q\
 ChartView{\x0a    b\
 ackground:rgb(39\
 , 39, 39);\x0a\x0a}\x0a\x0a\
-\x00\x00\x04\x01\
+\x00\x00\x045\
 Q\
 Label{\x0a    color\
 : white;\x0a    fon\
 t-size:12px;\x0a   \
- min-width:90px;\
-\x0a    max-width:9\
-0px;\x0a    text-al\
-ign:right;\x0a}\x0a\x0a/*\
-\xe8\xa1\xa8\xe6\xa0\xbc\xe7\x9a\x84\xe4\xb8\x80\xe7\xa7\x8d\xe7\
-\xbe\x8e\xe5\x8c\x96\xe6\x96\xb9\xe5\xbc\x8f*/\x0aQH\
-eaderView{\x0a    /\
-*font-size:18px;\
-*/\x0a    backgroun\
-d:rgb(39, 39, 39\
-);\x0a    border-to\
-p-right-radius: \
-8px;\x0a}\x0aQTableCor\
-nerButton::secti\
-on{\x0a\x09background:\
-rgb(39, 39, 39);\
-\x0a\x09border-top: 0.\
+ text-align:cent\
+er;\x0a}\x0a\x0a#feedback\
+Text{\x0a    font-s\
+ize:14px;\x0a    co\
+lor:rgb(194, 194\
+, 194);\x0a    marg\
+in-left:13px;\x0a}\x0a\
+\x0a\x0a/*\xe8\xa1\xa8\xe6\xa0\xbc\xe7\x9a\x84\xe4\xb8\x80\
+\xe7\xa7\x8d\xe7\xbe\x8e\xe5\x8c\x96\xe6\x96\xb9\xe5\xbc\x8f*\
+/\x0aQHeaderView{\x0a \
+   /*font-size:1\
+8px;*/\x0a    backg\
+round:rgb(39, 39\
+, 39);\x0a    borde\
+r-top-right-radi\
+us: 8px;\x0a}\x0aQTabl\
+eCornerButton::s\
+ection{\x0a\x09backgro\
+und:rgb(39, 39, \
+39);\x0a\x09border-top\
+: 0.5px solid rg\
+b(215, 217, 218)\
+;\x0a\x09border-left: \
+0.5px solid rgb(\
+215, 217, 218);\x0a\
+\x09border-bottom:0\
+.5px solid rgb(2\
+15, 217, 218);\x0a\x09\
+border-top-left-\
+radius: 8px;\x0a}\x0a\x0a\
+QHeaderView::sec\
+tion{\x0a    color:\
+rgb(173, 177, 17\
+9);\x0a    backgrou\
+nd:rgb(39, 39, 3\
+9);\x0a    border:n\
+one;\x0a\x09border: 0.\
 5px solid rgb(21\
-5, 217, 218);\x0a\x09b\
-order-left: 0.5p\
-x solid rgb(215,\
- 217, 218);\x0a\x09bor\
-der-bottom:0.5px\
- solid rgb(215, \
-217, 218);\x0a\x09bord\
-er-top-left-radi\
-us: 8px;\x0a}\x0a\x0aQHea\
-derView::section\
-{\x0a    color:rgb(\
-173, 177, 179);\x0a\
-    background:r\
-gb(39, 39, 39);\x0a\
-    border:none;\
-\x0a\x09border: 0.5px \
-solid rgb(215, 2\
-17, 218);\x0a    fo\
-nt-size:14px;\x0a  \
-  text-align:cen\
-ter;\x0a    padding\
--left:2px;\x0a\x09padd\
-ing-right:2px;\x0a}\
-\x0a\x0aQTableWidget{\x0a\
-    background:r\
-gb(39, 39, 39);\x0a\
-    border:none;\
-\x0a\x09outline:none;\x0a\
-    /*font-size:\
-18px;*/\x0a    }\x0a\x0aQ\
-TableWidget::ite\
-m{\x0a\x09border:0.25p\
-x solid rgb(215,\
- 217, 218);\x0a\x09col\
-or:rgba(255,255,\
-255,0.8);\x0a\x09font-\
-size:14px;\x0a}\x0a\x0aQT\
-ableWidget::item\
-::selected{\x0a    \
-color:rgb(219, 2\
-22, 224);\x0a    ba\
-ckground: rgb(79\
-, 81, 82);\x0a}\x0a\x0a\x0a\x0a\
-\
+5, 217, 218);\x0a  \
+  font-size:14px\
+;\x0a    text-align\
+:center;\x0a    pad\
+ding-left:2px;\x0a\x09\
+padding-right:2p\
+x;\x0a}\x0a\x0aQTableWidg\
+et{\x0a    backgrou\
+nd:rgb(39, 39, 3\
+9);\x0a    border:n\
+one;\x0a\x09outline:no\
+ne;\x0a    /*font-s\
+ize:18px;*/\x0a    \
+}\x0a\x0aQTableWidget:\
+:item{\x0a\x09border:0\
+.25px solid rgb(\
+215, 217, 218);\x0a\
+\x09color:rgba(255,\
+255,255,0.8);\x0a\x09f\
+ont-size:14px;\x0a}\
+\x0a\x0aQTableWidget::\
+item::selected{\x0a\
+    color:rgb(21\
+9, 222, 224);\x0a  \
+  background: rg\
+b(79, 81, 82);\x0a}\
+\x0a\x0a\x0a\x0a\
 "
 
 qt_resource_name = b"\
@@ -17096,7 +17099,7 @@ qt_resource_struct = b"\
 \x00\x00\x00b\x00\x01\x00\x00\x00\x01\x00\x04\x226\
 \x00\x00\x01\x87\xa2\xc7\x8a\x82\
 \x00\x00\x00\x98\x00\x00\x00\x00\x00\x01\x00\x04#\xb3\
-\x00\x00\x01\x87\xb6y\xd3\x9d\
+\x00\x00\x01\x87\xee\xfe\xde\xa8\
 "
 
 def qInitResources():

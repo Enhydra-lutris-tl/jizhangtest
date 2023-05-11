@@ -1,5 +1,4 @@
-import yaml
-
+import ruamel.yaml as yaml
 
 def get_yaml_data():
     getvalue = yaml.safe_load(open('../config.yaml', encoding='UTF-8'))
