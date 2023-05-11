@@ -11,7 +11,7 @@ from qframelesswindow import FramelessWindow, TitleBar
 
 from view.ChartView import ChartWidget
 from view.jizhangView import jizhangWidget
-import resource  # type: ignore
+import resource_rcc  # type: ignore
 
 
 class Widget(QFrame):
@@ -219,7 +219,7 @@ class Window(FramelessWindow):
         # "E:\pycharm\pyProject\jizhangtest\resource\dark\demo.qss"
         color = 'dark' if isDarkTheme() else 'light'
 
-        qss_file = QFile(f'resource/{color}/demo.qss')
+        qss_file = QFile(f':/resource/{color}/demo.qss')
         qss_file.open(QIODevice.ReadOnly | QIODevice.Text)
         style_sheet_text = str(qss_file.readAll(), encoding='UTF-8')
         self.setStyleSheet(style_sheet_text)
