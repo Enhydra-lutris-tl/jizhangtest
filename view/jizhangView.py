@@ -10,7 +10,7 @@ from common.style_sheet import StyleSheet
 from common.add_widget import AddWidget
 from main import ceshi as getValue
 from datetime import datetime
-# import ruamel.yaml as yaml
+import yaml
 
 
 class jizhangWidget(AddWidget):
@@ -76,7 +76,7 @@ class jizhangWidget(AddWidget):
         # 导入按钮
         self.importButton = PushButton('导入')
         self.importButton.setMaximumWidth(50)
-        # self.importButton.clicked.connect(self.select_folder)
+        self.importButton.clicked.connect(self.select_folder)
 
         # 操作情况反馈标签
         self.feedbackLabel = QLabel('此位置展示操作反馈')
@@ -154,16 +154,16 @@ class jizhangWidget(AddWidget):
             print(newValue)
             self.feedbackLabel.setText(newValue)
 
-    # def select_folder(self):
-    #     test_file = os.path.abspath('.')
-    #     folder_file = QFileDialog.getExistingDirectory(self, '选择文件夹')
-    #     print(folder_file, test_file)
-    #
-    #     """
-    #     自动生成yaml文件
-    #     """
-    #     data = {
-    #         "folder_file": folder_file,
-    #     }
-    #     with open(test_file + "/config.yaml", "w") as f:  # 写文件
-    #         yaml.safe_dump(data=data, stream=f)
+    def select_folder(self):
+        test_file = os.path.abspath('.')
+        folder_file = QFileDialog.getExistingDirectory(self, '选择文件夹')
+        print(folder_file, test_file)
+
+        """
+        自动生成yaml文件
+        """
+        data = {
+            "folder_file": folder_file,
+        }
+        with open(test_file + "/config.yaml", "w") as f:  # 写文件
+            yaml.safe_dump(data=data, stream=f)
