@@ -155,9 +155,8 @@ class jizhangWidget(AddWidget):
             self.feedbackLabel.setText(newValue)
 
     def select_folder(self):
-        test_file = os.path.abspath('.')
-        folder_file = QFileDialog.getExistingDirectory(self, '选择文件夹')
-        print(folder_file, test_file)
+        folder_file = QFileDialog.getExistingDirectory(self, '配置文件存放路径')
+        print(folder_file)
 
         """
         自动生成yaml文件
@@ -165,5 +164,5 @@ class jizhangWidget(AddWidget):
         data = {
             "folder_file": folder_file,
         }
-        with open(test_file + "/config.yaml", "w") as f:  # 写文件
+        with open(folder_file + "/config.yaml", "w") as f:  # 写文件
             yaml.safe_dump(data=data, stream=f)
