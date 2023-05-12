@@ -33,7 +33,7 @@ def add_yaml_data(data, add_key, add_value):
             yaml.safe_dump(yaml_data, f)
 
 
-add_yaml_data(get_yaml_data(), 'aaa', [11, 22, 33])
+add_yaml_data(get_yaml_data('../config.yaml'), 'aaa', [11, 22, 33])
 
 
 # 删除文件
