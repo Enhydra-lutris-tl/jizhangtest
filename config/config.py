@@ -25,15 +25,13 @@ def set_yaml_data(data, key, value):
 
 def add_yaml_data(data, add_key, add_value):
     yaml_data = data
-    if data[add_key]:
-        print('已存在的key，添加失败，请使用set_yaml_data进行修改')
+    # 判断是否存在该键
+    if add_key in yaml_data:
+        print('已存在的key，添加失败，请使用「set_yaml_data」方法进行修改')
     else:
         yaml_data[add_key] = add_value
         with open('../config.yaml', 'w') as f:
             yaml.safe_dump(yaml_data, f)
-
-
-add_yaml_data(get_yaml_data('../config.yaml'), 'aaa', [11, 22, 33])
 
 
 # 删除文件
