@@ -8,6 +8,7 @@ from common.add_widget import AddWidget
 from common.style_sheet import StyleSheet
 from main import getIES
 
+
 class ChartWidget(AddWidget):
     # todo：完善图表内容
     def __init__(self, text: str, parent=None):
@@ -84,7 +85,6 @@ class ChartWidget(AddWidget):
         for i in value:
             self.seriesL.append(i['label'], i['value'])
         self.seriesL.setLabelsVisible(True)
-
 
     def qingchu(self):
         self.seriesL.clear()

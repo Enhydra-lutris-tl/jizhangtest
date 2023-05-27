@@ -5,12 +5,13 @@ from PySide6.QtGui import QIcon, QPainter, QImage, QBrush, QColor, QFont
 from PySide6.QtWidgets import QApplication, QFrame, QStackedWidget, QHBoxLayout, QLabel
 
 from qfluentwidgets import (NavigationInterface, NavigationItemPosition, NavigationWidget, MessageBox,
-                            isDarkTheme, setTheme, Theme)
+                            isDarkTheme, setTheme, Theme, qrouter)
 from qfluentwidgets import FluentIcon as FIF
 from qframelesswindow import FramelessWindow, TitleBar
 
 from view.ChartView import ChartWidget
 from view.jizhangView import jizhangWidget
+from view.RegularlyRemind import RegularlyRemind
 import resource_rcc  # type: ignore
 
 
@@ -109,7 +110,7 @@ class Window(FramelessWindow):
         # create sub interface
         self.searchInterface = jizhangWidget('jizhang view', self)
         self.musicInterface = ChartWidget('报表页面', self)
-        self.videoInterface = Widget('小工具页面', self)
+        self.videoInterface = RegularlyRemind('小工具页面', self)
         self.folderInterface = Widget('文件夹页面', self)
         self.settingInterface = Widget('设置页面', self)
 
@@ -193,7 +194,7 @@ class Window(FramelessWindow):
         )
 
         # !IMPORTANT: don't forget to set the default route keyi
-        self.navigationInterface.setDefaultRouteKey(self.searchInterface.objectName())
+        qrouter.setDefaultRouteKey(self.stackWidget, self.searchInterface.objectName())
 
         # set the maximum width
         # self.navigationInterface.setExpandWidth(300)

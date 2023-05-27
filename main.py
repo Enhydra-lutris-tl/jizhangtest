@@ -33,7 +33,7 @@ def getAlipayValue():
 
 # 返回路径
 def get_Csv_File():
-    return '/Users/tanglei/life'
+    return 'F:\资源'
 
 
 # 获取微信账单数据
