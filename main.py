@@ -4,6 +4,7 @@ import os
 import pandas as pd
 from PySide6.QtCore import QFile, QIODevice
 import test
+import platform
 
 
 # 获取支付宝账单数据
@@ -33,7 +34,12 @@ def getAlipayValue():
 
 # 返回路径
 def get_Csv_File():
-    return 'F:\资源'
+    src = ''
+    if 'Darwin' == platform.system():
+        src = '/Users/tanglei/life'
+    elif 'Win' == platform.system():
+        src = 'F:\资源'
+    return src
 
 
 # 获取微信账单数据
@@ -89,6 +95,9 @@ def ceshi():
 
 
 def getIES():
+    """
+        获取以'收支'分类的金额汇总，并计算每个收支分类总金额的占比
+    """
     IES = ceshi().groupby(['收/支']).agg({"金额": "sum"})
     IES_Json = []
     Index_Value = IES.index.values
@@ -106,6 +115,3 @@ def getIES():
             }
         )
     return IES_Json
-
-
-

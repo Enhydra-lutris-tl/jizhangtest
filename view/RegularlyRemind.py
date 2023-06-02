@@ -6,7 +6,6 @@ from PySide6.QtGui import QPainter, QPen
 from qfluentwidgets import LineEdit, isDarkTheme, EditableComboBox, ComboBox, PushButton, DoubleSpinBox
 from common.add_widget import AddWidget
 from common.style_sheet import StyleSheet
-from main import getIES
 
 
 class RegularlyRemind(AddWidget):
